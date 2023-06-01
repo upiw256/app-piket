@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+    <style>
+      #video {
+        transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+      }
+      @keyframes fade-in-out {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .animate-fade-in-out {
+        animation: fade-in-out 3s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="bg-gray-800 py-4">
+      <div class="container mx-auto flex items-center justify-between">
+        <div>
+          <a
+            href="#"
+            class="flex justify-center items-center text-white font-bold text-xl"
+            ><img
+              src="https://www.sman1margaasih.sch.id/wp-content/uploads/2023/01/LOGO-MARGAASIH-ORI-150x150.png"
+              alt="Logo"
+              srcset=""
+              class="w-10 mr-3"
+            />
+            SMAN 1 Margaasih</a
+          >
+        </div>
+        <div>
+          <a href="#" class="text-white px-4">Home</a>
+          <a href="/login.html" class="text-white px-4">Login</a>
+        </div>
+      </div>
+    </nav>
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="container mx-auto py-8">
+        <div
+          class="bg-blue-500 hover:bg-blue-400 text-white p-4 rounded-lg w-60 mt-3 ml-3"
+        >
+          <p class="animate-fade-in-out">
+            <i class="fas fa-record-vinyl"></i> Recording...
+          </p>
+          <video id="video" width="640" height="480" autoplay></video>
+        </div>
+        <img
+          src="https://www.sman1margaasih.sch.id/wp-content/uploads/2023/01/LOGO-MARGAASIH-ORI-150x150.png"
+          alt="Logo"
+          class="w-16 mx-auto mb-4"
+        />
+        <p class="flex justify-center items-center text-3xl font-bold mb-3">
+          APLIKASI PIKET
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="#">
+            <div
+              class="bg-red-500 hover:bg-red-400 text-white p-4 rounded-lg flex flex-col justify-center items-center"
+            >
+              <i class="fas fa-heart text-4xl mb-4"></i>
+              <h2 class="text-xl font-bold mb-2">Kehadiran Siswa</h2>
+              <p>
+                Menu ini berfungsi untuk menginputkan rekap siswa yang tidak
+                hadir.
+              </p>
+            </div>
+          </a>
+          <a href="#">
+            <div
+              class="bg-blue-500 hover:bg-blue-400 text-white p-4 rounded-lg flex flex-col justify-center items-center"
+            >
+              <i class="fas fa-star text-4xl mb-4"></i>
+              <h2 class="text-xl font-bold mb-2">Keterlambatan</h2>
+              <p>
+                Menu ini untuk mencatat siswa yang datang terlambat lebih dari
+                10 menit ke sekolah
+              </p>
+            </div>
+          </a>
+          <a href="#">
+            <div
+              class="bg-green-500 hover:bg-green-400 text-white p-4 rounded-lg flex flex-col justify-center items-center"
+            >
+              <i class="fas fa-check-circle text-4xl mb-4"></i>
+              <h2 class="text-xl font-bold mb-2">Kehadiran guru</h2>
+              <p>
+                Menu ini hanya untuk menginputkan guru yang akan meninggalkan
+                sekolah.
+              </p>
+            </div>
+          </a>
+          <a href="#">
+            <div
+              class="bg-yellow-500 hover:bg-yellow-400 text-white p-4 rounded-lg flex flex-col justify-center items-center"
+            >
+              <i class="fas fa-lightbulb text-4xl mb-4"></i>
+              <h2 class="text-xl font-bold mb-2">Izin Keluar</h2>
+              <p>
+                Menu ini berfungsi untuk siswa yang akan izin keluar
+                meninggalkan sekolah.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Mendapatkan elemen video
+      var video = document.getElementById("video");
+
+      // Mengaktifkan kamera pengguna
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.error("Error accessing the camera:", error);
+          });
+      } else {
+        console.error("getUserMedia is not supported");
+      }
+    </script>
+  </body>
+</html>
