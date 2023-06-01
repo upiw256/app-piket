@@ -61,8 +61,8 @@
         <div
           class="bg-blue-500 hover:bg-blue-400 text-white p-4 rounded-lg w-60 mt-3 ml-3"
         >
-          <p class="animate-fade-in-out">
-            <i class="fas fa-record-vinyl"></i> Recording...
+          <p class="animate-fade-in-out" id="rec">
+            <i class="fas fa-record-vinyl"></i> Loading......
           </p>
           <video id="video" width="640" height="480" autoplay></video>
         </div>
@@ -75,7 +75,7 @@
           APLIKASI PIKET
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <a href="#">
+          <a href="/kehadiranSiswa.html">
             <div
               class="bg-red-500 hover:bg-red-400 text-white p-4 rounded-lg flex flex-col justify-center items-center"
             >
@@ -129,6 +129,7 @@
     <script>
       // Mendapatkan elemen video
       var video = document.getElementById("video");
+      var text = document.getElementById("rec");
 
       // Mengaktifkan kamera pengguna
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -136,6 +137,8 @@
           .getUserMedia({ video: true })
           .then(function (stream) {
             video.srcObject = stream;
+            text.innerHTML =
+              '<i class="fas fa-record-vinyl"></i> Recording....';
           })
           .catch(function (error) {
             console.error("Error accessing the camera:", error);
