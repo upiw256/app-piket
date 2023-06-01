@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kehadiran Siswa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex h-screen items-center justify-center">
+      <div class="bg-white shadow-md rounded-lg p-8" id="form">
+        <h2 class="text-2xl font-bold mb-6">Data Siswa</h2>
+        <form>
+          <div class="mb-4">
+            <label for="nama" class="block font-bold mb-2">Nama Siswa</label>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              placeholder="Nama Siswa"
+              required
+            />
+          </div>
+          <div class="flex justify-between">
+            <button
+              id="cari"
+              onclick=""
+              type="submit"
+              class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+            >
+              Cari data
+            </button>
+            <a href="/home.html" class="text-blue-500 hover:text-black">Home</a>
+          </div>
+        </form>
+      </div>
+      <div class="container mx-auto" id="table">
+        <div class="bg-white shadow-md rounded my-6">
+          <table class="min-w-max w-full table-auto">
+            <thead>
+              <tr
+                class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
+              >
+                <th class="py-3 px-6 text-left">No.</th>
+                <th class="py-3 px-6 text-left">Nama</th>
+                <th class="py-3 px-6 text-left">Email</th>
+                <th class="py-3 px-6 text-left">Role</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+              <tr class="border-b border-gray-200 hover:bg-gray-100">
+                <td class="py-3 px-6 text-left whitespace-nowrap">1</td>
+                <td class="py-3 px-6 text-left">John Doe</td>
+                <td class="py-3 px-6 text-left">johndoe@example.com</td>
+                <td class="py-3 px-6 text-left">Admin</td>
+              </tr>
+              <tr class="border-b border-gray-200 hover:bg-gray-100">
+                <td class="py-3 px-6 text-left whitespace-nowrap">2</td>
+                <td class="py-3 px-6 text-left">Jane Smith</td>
+                <td class="py-3 px-6 text-left">janesmith@example.com</td>
+                <td class="py-3 px-6 text-left">User</td>
+              </tr>
+              <!-- Tambahkan baris tambahan sesuai kebutuhan -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      var form = document.getElementById("form");
+      var table = document.getElementById("table");
+      var button = document.getElementById("cari");
+      table.style.display = "none";
+      //   button.onclick = table.style.display = "block";
+      //   button.onclick = form.style.display = "none";
+    </script>
+  </body>
+</html>
