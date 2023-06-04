@@ -10,75 +10,238 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     />
+    <style>
+      .table {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+      .search-input {
+        max-width: 200px;
+      }
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      .pagination-item {
+        margin: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+      }
+      .pagination-item.active {
+        background-color: #333;
+        color: #fff;
+      }
+    </style>
   </head>
   <body class="bg-gray-100">
-    <div class="flex h-screen items-center justify-center">
-      <div class="bg-white shadow-md rounded-lg p-8" id="form">
-        <h2 class="text-2xl font-bold mb-6">Data Siswa</h2>
-        <form>
-          <div class="mb-4">
-            <label for="nama" class="block font-bold mb-2">Nama Siswa</label>
-            <input
-              type="text"
-              id="nama"
-              name="nama"
-              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Nama Siswa"
-              required
-            />
-          </div>
-          <div class="flex justify-between">
-            <button
-              id="cari"
-              onclick=""
-              type="submit"
-              class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
-            >
-              Cari data
-            </button>
-            <a href="/home.html" class="text-blue-500 hover:text-black">Home</a>
-          </div>
-        </form>
+    <div class="flex flex-col h-screen items-center justify-center m-3">
+      <div class="mb-4">
+        <input
+          id="searchInput"
+          class="border border-gray-300 rounded-md p-2 search-input"
+          type="text"
+          placeholder="Search..."
+        />
       </div>
-      <div class="container mx-auto" id="table">
-        <div class="bg-white shadow-md rounded my-6">
-          <table class="min-w-max w-full table-auto">
-            <thead>
-              <tr
-                class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
-              >
-                <th class="py-3 px-6 text-left">No.</th>
-                <th class="py-3 px-6 text-left">Nama</th>
-                <th class="py-3 px-6 text-left">Email</th>
-                <th class="py-3 px-6 text-left">Role</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-600 text-sm font-light">
-              <tr class="border-b border-gray-200 hover:bg-gray-100">
-                <td class="py-3 px-6 text-left whitespace-nowrap">1</td>
-                <td class="py-3 px-6 text-left">John Doe</td>
-                <td class="py-3 px-6 text-left">johndoe@example.com</td>
-                <td class="py-3 px-6 text-left">Admin</td>
-              </tr>
-              <tr class="border-b border-gray-200 hover:bg-gray-100">
-                <td class="py-3 px-6 text-left whitespace-nowrap">2</td>
-                <td class="py-3 px-6 text-left">Jane Smith</td>
-                <td class="py-3 px-6 text-left">janesmith@example.com</td>
-                <td class="py-3 px-6 text-left">User</td>
-              </tr>
-              <!-- Tambahkan baris tambahan sesuai kebutuhan -->
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <table id="dataTable" class="table w-full">
+        <thead>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <th class="bg-gray-200 p-2">Name</th>
+            <th class="bg-gray-200 p-2">Email</th>
+            <th class="bg-gray-200 p-2">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">John Doe</td>
+            <td class="p-2">john.doe@example.com</td>
+            <td class="p-2">Admin</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jine Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jene Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">Jane Smith</td>
+            <td class="p-2">jane.smith@example.com</td>
+            <td class="p-2">User</td>
+          </tr>
+          <!-- Add more rows here -->
+        </tbody>
+      </table>
+      <div id="pagination" class="pagination"></div>
     </div>
+
     <script>
-      var form = document.getElementById("form");
-      var table = document.getElementById("table");
-      var button = document.getElementById("cari");
-      table.style.display = "none";
-      //   button.onclick = table.style.display = "block";
-      //   button.onclick = form.style.display = "none";
+      const searchInput = document.getElementById("searchInput");
+      const dataTable = document.getElementById("dataTable");
+      const tableRows = dataTable.getElementsByTagName("tr");
+      const pagination = document.getElementById("pagination");
+      const rowsPerPage = 10;
+      let currentPage = 1;
+      function showRows(startIndex, endIndex) {
+        for (let i = 0; i < tableRows.length; i++) {
+          if (i >= startIndex && i < endIndex) {
+            tableRows[i].style.display = "";
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+      }
+      function showPagination(totalRows) {
+        pagination.innerHTML = "";
+
+        const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const paginationItem = document.createElement("span");
+          paginationItem.textContent = i;
+          paginationItem.className = "pagination-item";
+          if (i === currentPage) {
+            paginationItem.classList.add("active");
+          }
+
+          paginationItem.addEventListener("click", function () {
+            currentPage = i;
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const endIndex = startIndex + rowsPerPage;
+
+            showRows(startIndex, endIndex);
+            showPagination(totalRows);
+          });
+
+          pagination.appendChild(paginationItem);
+        }
+      }
+      // searchInput.addEventListener("keyup", function () {
+      //   const searchText = searchInput.value.toLowerCase();
+
+      //   for (let i = 1; i < tableRows.length; i++) {
+      //     // Start from index 1 to exclude thead row
+      //     const cells = tableRows[i].getElementsByTagName("td");
+      //     let found = false;
+
+      //     for (let j = 0; j < cells.length; j++) {
+      //       const cellText = cells[j].innerText.toLowerCase();
+
+      //       if (cellText.includes(searchText)) {
+      //         found = true;
+      //         break;
+      //       }
+      //     }
+
+      //     if (found) {
+      //       tableRows[i].style.display = "";
+      //     } else {
+      //       tableRows[i].style.display = "none";
+      //     }
+      //   }
+      // });
+      function performSearch() {
+        const searchText = searchInput.value.toLowerCase();
+        // let filteredRows = [];
+        for (let i = 1; i < tableRows.length; i++) {
+          // Start from index 1 to exclude thead row
+          const cells = tableRows[i].getElementsByTagName("td");
+          let found = false;
+
+          for (let j = 0; j < cells.length; j++) {
+            const cellText = cells[j].innerText.toLowerCase();
+
+            if (cellText.includes(searchText)) {
+              found = true;
+              break;
+            }
+          }
+
+          if (found) {
+            tableRows[i].style.display = "";
+          } else {
+            tableRows[i].style.display = "none";
+          }
+        }
+        const startIndex = 0;
+        // const endIndex = Math.min(rowsPerPage, filteredRows.length);
+
+        showRows(startIndex, endIndex);
+        // showPagination(filteredRows.length);
+      }
+
+      searchInput.addEventListener("keyup", performSearch);
+
+      showRows(0, rowsPerPage);
+      showPagination(tableRows.length - 1);
     </script>
   </body>
 </html>
