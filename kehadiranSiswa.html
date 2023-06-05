@@ -37,6 +37,10 @@
         color: #fff;
       }
     </style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+  />
   </head>
   <body class="bg-gray-100">
     <div class="flex flex-col h-screen items-center justify-center m-3">
@@ -52,104 +56,62 @@
         <thead>
           <tr class="even:bg-gray-400 odd:bg-white">
             <th class="bg-gray-200 p-2">Name</th>
-            <th class="bg-gray-200 p-2">Email</th>
-            <th class="bg-gray-200 p-2">Role</th>
+            <th class="bg-gray-200 p-2">NIS</th>
+            <th class="bg-gray-200 p-2">Kelas</th>
+            <th class="bg-gray-200 p-2">Jumlah Keterlambatan</th>
+            <th class="bg-gray-200 p-2">Tindakan</th>
           </tr>
         </thead>
         <tbody>
           <tr class="even:bg-gray-400 odd:bg-white">
             <td class="p-2">John Doe</td>
-            <td class="p-2">john.doe@example.com</td>
-            <td class="p-2">Admin</td>
+            <td class="p-2">12345</td>
+            <td class="p-2">XII IPA 1</td>
+            <td class="p-2" id="jml">1</td>
+            <td class="p-2">
+              <button onclick="tambah();">
+                <i class="fas fa-plus-square text-yellow-500 text-3xl hover:text-yellow-300"></i>
+              </button>
+              <button onclick="kurang();">
+                <i class="fas fa-minus-square text-red-700 text-3xl hover:text-red-300"></i>
+              </button>
+              <button onclick="alasan();">
+                <i class="fas fa-pen-square text-green-700 text-3xl hover:text-green-300"></i>
+              </button>
+            </td>
           </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jine Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jene Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
-          <tr class="even:bg-gray-400 odd:bg-white">
-            <td class="p-2">Jane Smith</td>
-            <td class="p-2">jane.smith@example.com</td>
-            <td class="p-2">User</td>
-          </tr>
+          
           <!-- Add more rows here -->
         </tbody>
       </table>
       <div id="pagination" class="pagination"></div>
     </div>
-
+    <div class="fixed inset-0 bg-gray-100 bg-opacity-80 flex items-center justify-center hidden" id="modal">
+      <div class="bg-white rounded-lg p-8">
+        <h2 class="text-2xl font-bold mb-4">Modal Title</h2>
+        <p>Modal content goes here...</p>
+        <div class="mt-6 flex justify-end">
+          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="modalClose()">Close</button>
+        </div>
+      </div>
+    </div>
     <script>
+      
+      function modalClose(){
+      const modal = document.getElementById("modal")
+      console.log(modal)
+      modal.classList.add("hidden")
+      }
+
       const searchInput = document.getElementById("searchInput");
       const dataTable = document.getElementById("dataTable");
-      const tableRows = dataTable.getElementsByTagName("tr");
+      const tableBody = dataTable.querySelector('tbody');
+      const tableRows = tableBody.getElementsByTagName("tr");
       const pagination = document.getElementById("pagination");
-      const rowsPerPage = 10;
+
+      const rowsPerPage = 20;
       let currentPage = 1;
+      let jml = document.getElementById("jml");
       function showRows(startIndex, endIndex) {
         for (let i = 0; i < tableRows.length; i++) {
           if (i >= startIndex && i < endIndex) {
@@ -184,6 +146,24 @@
           pagination.appendChild(paginationItem);
         }
       }
+
+
+      function tambah() {
+        console.log(parseInt(jml.innerHTML) + 1)
+        jml.innerHTML = parseInt(jml.innerHTML)+1
+      }
+      function kurang() {
+        console.log(parseInt(jml.innerHTML) + 1)
+        if (parseInt(jml.innerHTML) <= 0) {
+          return
+        }else{
+          jml.innerHTML = parseInt(jml.innerHTML)-1
+        }
+      }
+      function alasan() {
+        modal.classList.remove("hidden")
+      }
+
       // searchInput.addEventListener("keyup", function () {
       //   const searchText = searchInput.value.toLowerCase();
 
@@ -210,7 +190,7 @@
       // });
       function performSearch() {
         const searchText = searchInput.value.toLowerCase();
-        // let filteredRows = [];
+        let filteredRows = [];
         for (let i = 1; i < tableRows.length; i++) {
           // Start from index 1 to exclude thead row
           const cells = tableRows[i].getElementsByTagName("td");
@@ -231,11 +211,12 @@
             tableRows[i].style.display = "none";
           }
         }
+        console.log(cells)
         const startIndex = 0;
-        // const endIndex = Math.min(rowsPerPage, filteredRows.length);
+        const endIndex = Math.min(rowsPerPage, filteredRows.length);
 
         showRows(startIndex, endIndex);
-        // showPagination(filteredRows.length);
+        showPagination(filteredRows.length);
       }
 
       searchInput.addEventListener("keyup", performSearch);
