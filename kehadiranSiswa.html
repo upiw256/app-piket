@@ -59,6 +59,7 @@
             <th class="bg-gray-200 p-2">NIS</th>
             <th class="bg-gray-200 p-2">Kelas</th>
             <th class="bg-gray-200 p-2">Jumlah Keterlambatan</th>
+            <th class="bg-gray-200 p-2">Alasan Terakhir</th>
             <th class="bg-gray-200 p-2">Tindakan</th>
           </tr>
         </thead>
@@ -68,15 +69,17 @@
             <td class="p-2">12345</td>
             <td class="p-2">XII IPA 1</td>
             <td class="p-2" id="jml">1</td>
+            <td class="p-2">Ketiduran</td>
             <td class="p-2">
-              <button onclick="tambah();">
+              <!-- <button onclick="tambah();">
                 <i class="fas fa-plus-square text-yellow-500 text-3xl hover:text-yellow-300"></i>
               </button>
               <button onclick="kurang();">
                 <i class="fas fa-minus-square text-red-700 text-3xl hover:text-red-300"></i>
-              </button>
-              <button onclick="alasan();">
-                <i class="fas fa-pen-square text-green-700 text-3xl hover:text-green-300"></i>
+              </button> -->
+              <button onclick="alasan();" class=" text-white bg-green-500 p-3 rounded-lg hover:bg-green-300">
+                <i class="fas fa-pen-square mr-2"></i>
+                Alasan terlambat
               </button>
             </td>
           </tr>
@@ -88,8 +91,8 @@
     </div>
     <div class="fixed inset-0 bg-gray-100 bg-opacity-80 flex items-center justify-center hidden" id="modal">
       <div class="bg-white rounded-lg p-8">
-        <h2 class="text-2xl font-bold mb-4">Modal Title</h2>
-        <p>Modal content goes here...</p>
+        <h2 class="text-2xl font-bold mb-4">Alasan terlambat</h2>
+        <p id="nama"></p>
         <div class="mt-6 flex justify-end">
           <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="modalClose()">Close</button>
         </div>
