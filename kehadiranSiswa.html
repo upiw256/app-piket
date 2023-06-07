@@ -38,9 +38,9 @@
       }
     </style>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    />
   </head>
   <body class="bg-gray-100">
     <div class="flex flex-col h-screen items-center justify-center m-3">
@@ -77,46 +77,86 @@
               <button onclick="kurang();">
                 <i class="fas fa-minus-square text-red-700 text-3xl hover:text-red-300"></i>
               </button> -->
-              <button onclick="alasan();" class=" text-white bg-green-500 p-3 rounded-lg hover:bg-green-300">
+              <button
+                onclick="alasan(1);"
+                class="text-white bg-green-500 p-3 rounded-lg hover:bg-green-300"
+              >
                 <i class="fas fa-pen-square mr-2"></i>
                 Alasan terlambat
               </button>
             </td>
           </tr>
-          
+          <tr class="even:bg-gray-400 odd:bg-white">
+            <td class="p-2">John Doe</td>
+            <td class="p-2">65134</td>
+            <td class="p-2">XII IPA 1</td>
+            <td class="p-2" id="jml">1</td>
+            <td class="p-2">Ketiduran</td>
+            <td class="p-2">
+              <!-- <button onclick="tambah();">
+                <i class="fas fa-plus-square text-yellow-500 text-3xl hover:text-yellow-300"></i>
+              </button>
+              <button onclick="kurang();">
+                <i class="fas fa-minus-square text-red-700 text-3xl hover:text-red-300"></i>
+              </button> -->
+              <button
+                onclick="alasan(2);"
+                class="text-white bg-green-500 p-3 rounded-lg hover:bg-green-300"
+              >
+                <i class="fas fa-pen-square mr-2"></i>
+                Alasan terlambat
+              </button>
+            </td>
+          </tr>
           <!-- Add more rows here -->
         </tbody>
       </table>
       <div id="pagination" class="pagination"></div>
     </div>
-    <div class="fixed inset-0 bg-gray-100 bg-opacity-80 flex items-center justify-center hidden" id="modal">
+    <div
+      class="fixed inset-0 bg-gray-100 bg-opacity-80 flex items-center justify-center hidden"
+      id="modal"
+    >
       <div class="bg-white rounded-lg p-8">
         <h2 class="text-2xl font-bold mb-4">Alasan terlambat</h2>
         <p id="nama"></p>
         <div class="mt-6 flex justify-end">
-          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="modalClose()">Close</button>
+          <form action="#" method="post">
+            <input
+              type="text"
+              name="alasan"
+              id=""
+              placeholder="Alasan terlambat"
+            />
+          </form>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            onclick="modalClose()"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>
     <script>
-      
-      function modalClose(){
-      const modal = document.getElementById("modal")
-      console.log(modal)
-      modal.classList.add("hidden")
+      function modalClose() {
+        const modal = document.getElementById("modal");
+        console.log(modal);
+        modal.classList.add("hidden");
       }
 
       const searchInput = document.getElementById("searchInput");
       const dataTable = document.getElementById("dataTable");
-      const tableBody = dataTable.querySelector('tbody');
+      const tableBody = dataTable.querySelector("tbody");
       const tableRows = tableBody.getElementsByTagName("tr");
       const pagination = document.getElementById("pagination");
-
+      const nama = document.getElementById("nama");
       const rowsPerPage = 20;
       let currentPage = 1;
       let jml = document.getElementById("jml");
       function showRows(startIndex, endIndex) {
         for (let i = 0; i < tableRows.length; i++) {
+          console.log(tableRows.namedItem);
           if (i >= startIndex && i < endIndex) {
             tableRows[i].style.display = "";
           } else {
@@ -150,21 +190,23 @@
         }
       }
 
-
       function tambah() {
-        console.log(parseInt(jml.innerHTML) + 1)
-        jml.innerHTML = parseInt(jml.innerHTML)+1
+        console.log(parseInt(jml.innerHTML) + 1);
+        jml.innerHTML = parseInt(jml.innerHTML) + 1;
       }
       function kurang() {
-        console.log(parseInt(jml.innerHTML) + 1)
+        console.log(parseInt(jml.innerHTML) + 1);
         if (parseInt(jml.innerHTML) <= 0) {
-          return
-        }else{
-          jml.innerHTML = parseInt(jml.innerHTML)-1
+          return;
+        } else {
+          jml.innerHTML = parseInt(jml.innerHTML) - 1;
         }
       }
-      function alasan() {
-        modal.classList.remove("hidden")
+      function alasan(no) {
+        modal.classList.remove("hidden");
+        const rows = document.getElementsByTagName("tr");
+        const data = rows[no].getElementsByTagName("td")[1].innerHTML;
+        nama.innerHTML = data;
       }
 
       // searchInput.addEventListener("keyup", function () {
@@ -214,7 +256,7 @@
             tableRows[i].style.display = "none";
           }
         }
-        console.log(cells)
+        console.log(cells);
         const startIndex = 0;
         const endIndex = Math.min(rowsPerPage, filteredRows.length);
 
